@@ -1,5 +1,5 @@
 {
-	"$schema": "https://json.schemastore.org/electron-builder.json",
+	"$schema": "https://raw.githubusercontent.com/electron-userland/electron-builder/refs/heads/master/packages/app-builder-lib/scheme.json",
 	"appId": "ocs.enncy.cn",
 	"extraMetadata": {
 		"name": "OCS Desktop",
@@ -12,6 +12,12 @@
 		"oneClick": false,
 		"perMachine": true,
 		"allowToChangeInstallationDirectory": true
+	},
+	"rpm": {
+		"packageName": "ocs-desktop"
+	},
+	"deb": {
+		"packageName": "ocs-desktop"
 	},
 	"win": {
 		"icon": "public/favicon.png",
@@ -28,8 +34,13 @@
 		]
 	},
 	"linux": {
+		"executableName": "ocs-desktop",
 		"icon": "public/favicon.png",
 		"artifactName": "ocs-${version}-setup-${os}-${arch}.${ext}",
-		"target": [{ "target": "AppImage", "arch": ["x64", "arm64"] }]
+		"target": [
+			{ "target": "AppImage", "arch": ["x64", "arm64"] },
+			{ "target": "deb", "arch": ["x64", "arm64"] },
+			{ "target": "rpm", "arch": ["x64", "arm64"] }
+		]
 	}
 }
